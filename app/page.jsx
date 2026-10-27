@@ -79,6 +79,7 @@ export default async function Page() {
             </svg>
           ))}
         </div>
+        <div className="hero-inner">
         <div className="hero-content">
           <h1 className="hero-title">CAFE<span className="bang">!</span>N</h1>
           <p className="hero-tagline">&quot;The brew that comes to you&quot;</p>
@@ -109,6 +110,7 @@ export default async function Page() {
         <div className="hero-cart" aria-hidden="true">
           <img src="/CafeinLogo.jpg" alt="CAFEIN coffee cart" className="hero-logo-img"/>
         </div>
+        </div>{/* hero-inner */}
       </section>
 
       {/* ── About ── */}
