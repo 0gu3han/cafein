@@ -70,36 +70,14 @@ export default async function Page() {
       {/* ── Hero ── */}
       <section className="hero" id="home">
         <div className="hero-bg-beans" aria-hidden="true">
-          {/* bean 1 — large, top left */}
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
-            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
-          </svg>
-          {/* bean 2 — medium, left middle */}
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
-            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
-          </svg>
-          {/* bean 3 — large, top right */}
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
-            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
-          </svg>
-          {/* bean 4 — small, bottom right */}
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
-            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
-          </svg>
-          {/* bean 5 — tiny, center */}
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
-            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
-          </svg>
-          {/* bean 6 — small, bottom left */}
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
-            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
-          </svg>
+          {[...Array(6)].map((_, i) => (
+            <svg key={i} viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 6 C62 6 74 24 74 60 C74 96 62 114 40 114 C18 114 6 96 6 60 C6 24 18 6 40 6 Z"
+                stroke="#7a4828" strokeWidth="3" fill="none"/>
+              <path d="M40 10 C34 38 46 82 40 110"
+                stroke="#7a4828" strokeWidth="2" fill="none" strokeLinecap="round"/>
+            </svg>
+          ))}
         </div>
         <div className="hero-content">
           <h1 className="hero-title">CAFE<span className="bang">!</span>N</h1>
