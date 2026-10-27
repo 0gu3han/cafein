@@ -229,11 +229,15 @@ svg { flex-shrink: 0; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.06;
+  overflow: hidden;
 }
-.hero-bg-beans svg { position: absolute; width: 300px; }
-.hero-bg-beans svg:nth-child(1) { top: 10%; left: -60px; transform: rotate(-20deg); }
-.hero-bg-beans svg:nth-child(2) { bottom: 15%; right: -40px; transform: rotate(30deg); width: 200px; }
+.hero-bg-beans svg { position: absolute; }
+.hero-bg-beans svg:nth-child(1) { width: 220px; top: 5%;  left: -50px;  transform: rotate(-25deg); opacity: 0.07; }
+.hero-bg-beans svg:nth-child(2) { width: 140px; top: 55%; left: 8%;     transform: rotate(15deg);  opacity: 0.05; }
+.hero-bg-beans svg:nth-child(3) { width: 180px; top: 15%; right: -30px; transform: rotate(40deg);  opacity: 0.06; }
+.hero-bg-beans svg:nth-child(4) { width: 100px; bottom: 10%; right: 12%; transform: rotate(-10deg); opacity: 0.05; }
+.hero-bg-beans svg:nth-child(5) { width: 80px;  top: 40%; left: 45%;    transform: rotate(60deg);  opacity: 0.04; }
+.hero-bg-beans svg:nth-child(6) { width: 120px; bottom: 20%; left: 30%; transform: rotate(-40deg); opacity: 0.04; }
 
 .hero-content {
   flex: 1;
@@ -297,7 +301,9 @@ svg { flex-shrink: 0; }
 }
 .hero-logo-img {
   width: 100%;
-  border-radius: var(--radius-lg);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
   box-shadow: var(--shadow-lg);
 }
 

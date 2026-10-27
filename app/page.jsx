@@ -70,9 +70,35 @@ export default async function Page() {
       {/* ── Hero ── */}
       <section className="hero" id="home">
         <div className="hero-bg-beans" aria-hidden="true">
+          {/* bean 1 — large, top left */}
           <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="100" cy="100" rx="80" ry="50" stroke="#c9a882" strokeWidth="2" fill="none"/>
-            <path d="M100 50 Q120 80 100 150" stroke="#c9a882" strokeWidth="1.5" fill="none"/>
+            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
+            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
+          </svg>
+          {/* bean 2 — medium, left middle */}
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
+            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
+          </svg>
+          {/* bean 3 — large, top right */}
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
+            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
+          </svg>
+          {/* bean 4 — small, bottom right */}
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
+            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
+          </svg>
+          {/* bean 5 — tiny, center */}
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
+            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
+          </svg>
+          {/* bean 6 — small, bottom left */}
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="100" rx="78" ry="48" stroke="#7a4828" strokeWidth="3" fill="none"/>
+            <path d="M100 52 Q125 85 100 148" stroke="#7a4828" strokeWidth="2" fill="none"/>
           </svg>
         </div>
         <div className="hero-content">
