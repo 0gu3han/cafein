@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAFE!N — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">CAFE!N</div>
+      <p class="login-sub">Menu Admin</p>
+      <form id="loginForm" autocomplete="off">
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter admin password" autocomplete="current-password">
+        </div>
+        <p class="login-error hidden" id="loginError">Incorrect password. Try again.</p>
+        <button type="submit" class="btn-login">Sign In</button>
+      </form>
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Back to site
+      </a>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard hidden" id="dashboard">
+
+    <!-- Header -->
+    <header class="adm-header">
+      <div class="adm-header-inner">
+        <div class="adm-logo">CAFE<span>!</span>N <span class="adm-badge">Admin</span></div>
+        <div class="adm-header-actions">
+          <button class="adm-btn adm-btn-ghost" id="exportBtn" title="Export menu as JSON">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            Export
+          </button>
+          <label class="adm-btn adm-btn-ghost" title="Import menu from JSON">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            Import
+            <input type="file" id="importFile" accept=".json" style="display:none">
+          </label>
+          <a href="index.html" class="adm-btn adm-btn-ghost" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+            View Site
+          </a>
+          <button class="adm-btn adm-btn-danger-ghost" id="logoutBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="adm-main">
+
+      <!-- Toolbar -->
+      <div class="adm-toolbar">
+        <div class="adm-tabs">
+          <button class="adm-tab active" data-cat="all">All Items</button>
+          <button class="adm-tab" data-cat="coffee">Coffee</button>
+          <button class="adm-tab" data-cat="matcha">Matcha</button>
+          <button class="adm-tab" data-cat="addons">Add-ons</button>
+        </div>
+        <div class="adm-toolbar-right">
+          <button class="adm-btn adm-btn-danger-ghost" id="resetBtn" title="Reset to default menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset to Default
+          </button>
+          <button class="adm-btn adm-btn-primary" id="addItemBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            Add Item
+          </button>
+        </div>
+      </div>
+
+      <!-- Item list -->
+      <div class="item-list" id="itemList"></div>
+
+    </main>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add Menu Item</h2>
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <form id="itemForm" class="modal-form" novalidate>
+        <input type="hidden" id="itemId">
+        <div class="modal-row">
+          <div class="modal-field">
+            <label for="iName">Name <span class="req">*</span></label>
+            <input type="text" id="iName" required placeholder="e.g. Iced Latte">
+          </div>
+          <div class="modal-field">
+            <label for="iCategory">Category <span class="req">*</span></label>
+            <select id="iCategory" required>
+              <option value="" disabled selected>Select...</option>
+              <option value="coffee">Coffee</option>
+              <option value="matcha">Matcha</option>
+              <option value="addons">Add-on</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-field">
+          <label for="iDescription">Description</label>
+          <input type="text" id="iDescription" placeholder="Short description of the drink">
+        </div>
+        <div class="modal-row">
+          <div class="modal-field">
+            <label for="iPrice">Price ($) <span class="req">*</span></label>
+            <input type="number" id="iPrice" required min="0" step="0.25" placeholder="5.00">
+          </div>
+          <div class="modal-field">
+            <label for="iBadge">Badge Label</label>
+            <input type="text" id="iBadge" placeholder="e.g. Fan Fave, Seasonal, New">
+          </div>
+        </div>
+        <div class="modal-field">
+          <label for="iIngredients">Ingredients</label>
+          <input type="text" id="iIngredients" placeholder="e.g. Espresso, oat milk, vanilla syrup">
+        </div>
+        <div class="modal-row">
+          <div class="modal-field">
+            <label for="iCaffeine">Caffeine (mg)</label>
+            <input type="number" id="iCaffeine" min="0" placeholder="0">
+          </div>
+          <div class="modal-field">
+            <label for="iCalories">Calories</label>
+            <input type="number" id="iCalories" min="0" placeholder="0">
+          </div>
+        </div>
+        <div class="modal-check">
+          <label class="check-label">
+            <input type="checkbox" id="iFeatured">
+            <span>Featured item <small>(highlighted on menu)</small></span>
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="adm-btn adm-btn-ghost" id="cancelBtn">Cancel</button>
+          <button type="submit" class="adm-btn adm-btn-primary" id="saveBtn">Save Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    image: cafein:latest
+    container_name: cafein_app
+    restart: unless-stopped
+    expose:
+      - "3000"
+    env_file:
+      - .env.production
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAFE!N — The Brew That Comes To You</title>
+  <meta name="description" content="Mobile coffee & matcha cart serving Middle Tennessee. Events, weddings, and private bookings.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">CAFE<span>!</span>N</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#book" class="nav-link btn-nav">Book the Cart</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-beans" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="100" rx="80" ry="50" stroke="#c9a882" stroke-width="2" fill="none"/><path d="M100 50 Q120 80 100 150" stroke="#c9a882" stroke-width="1.5" fill="none"/></svg>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">CAFE<span class="bang">!</span>N</h1>
+      <p class="hero-tagline">"The brew that comes to you"</p>
+      <div class="hero-tags">
+        <span>Events</span>
+        <span>Weddings</span>
+        <span>Private Bookings</span>
+      </div>
+      <div class="hero-drinks">
+        <span class="drink-pill coffee">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+          Coffee
+        </span>
+        <span class="drink-pill matcha">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          Matcha
+        </span>
+      </div>
+      <a href="#book" class="btn btn-primary">Book the Cart</a>
+      <a href="#menu" class="btn btn-ghost">View Menu</a>
+    </div>
+    <div class="hero-cart" aria-hidden="true">
+      <img src="CafeinLogo.jpg" alt="CAFEIN coffee cart" class="hero-logo-img">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <p class="label">Who We Are</p>
+      <h2 class="section-title">We Bring the <em>Cafe Experience</em> to Your Event</h2>
+      <p class="section-sub">CAFE!N is a mobile coffee &amp; matcha cart based in Middle Tennessee. Skip the coffee shop line &mdash; we set up right at your venue and craft every drink fresh, just the way your guests like it.</p>
+      <div class="service-cards">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <h3>Weddings</h3>
+          <p>An elegant cart experience for your reception, ceremony, or cocktail hour. Customized to match your aesthetic.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/></svg>
+          </div>
+          <h3>Events</h3>
+          <p>Corporate gatherings, markets, pop-ups, school events &mdash; we fuel any crowd, big or small.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Private Bookings</h3>
+          <p>Baby showers, birthdays, brunch parties &mdash; make your gathering unforgettable with a barista on-site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <p class="label">What We Serve</p>
+      <h2 class="section-title">Our Menu</h2>
+      <p class="section-sub">Every drink is made to order. Custom event menus available &mdash; just ask.</p>
+
+      <div class="menu-tabs" role="tablist">
+        <button class="tab active" data-tab="coffee" role="tab" aria-selected="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+          Coffee
+        </button>
+        <button class="tab" data-tab="matcha" role="tab" aria-selected="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          Matcha
+        </button>
+        <button class="tab" data-tab="addons" role="tab" aria-selected="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          Add-ons
+        </button>
+      </div>
+
+      <div class="menu-panel active" id="panel-coffee" role="tabpanel">
+        <div class="menu-grid"></div>
+      </div>
+      <div class="menu-panel" id="panel-matcha" role="tabpanel">
+        <div class="menu-grid"></div>
+      </div>
+      <div class="menu-panel" id="panel-addons" role="tabpanel">
+        <div class="menu-grid"></div>
+      </div>
+
+      <p class="menu-note">* Prices may vary by event. Custom menus available upon request.</p>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book-section" id="book">
+    <div class="container">
+      <p class="label light">Ready to Book?</p>
+      <h2 class="section-title light">Bring CAFE!N to Your Event</h2>
+      <p class="section-sub light">Fill out the form and we'll get back to you within 48 hours. Or email us directly at <a href="mailto:cafein.coffeecart@gmail.com" class="inline-link">cafein.coffeecart@gmail.com</a></p>
+
+      <form class="booking-form" id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(615) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="eventType">Event Type <span class="req">*</span></label>
+            <select id="eventType" name="eventType" required>
+              <option value="" disabled selected>Select type...</option>
+              <option value="wedding">Wedding</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="birthday">Birthday Party</option>
+              <option value="baby-shower">Baby Shower</option>
+              <option value="brunch">Brunch / Private Party</option>
+              <option value="market">Market / Pop-up</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Event Date <span class="req">*</span></label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="guests">Estimated Guest Count</label>
+            <input type="number" id="guests" name="guests" min="1" placeholder="e.g. 75">
+          </div>
+        </div>
+        <div class="form-group full">
+          <label for="location">Event Location / Venue</label>
+          <input type="text" id="location" name="location" placeholder="City, TN or venue name">
+        </div>
+        <div class="form-group full">
+          <label for="message">Anything else we should know?</label>
+          <textarea id="message" name="message" rows="4" placeholder="Theme, special requests, questions..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-submit" id="submitBtn">Send Booking Request</button>
+      </form>
+
+      <div class="form-success hidden" id="formSuccess">
+        <div class="success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Request Received!</h3>
+        <p>Thanks for reaching out. We'll get back to you within 48 hours.</p>
+        <a href="mailto:cafein.coffeecart@gmail.com" class="btn btn-ghost-dark">Email Us Directly</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-logo">CAFE<span>!</span>N</div>
+      <p class="footer-tagline">"The brew that comes to you"</p>
+      <div class="footer-details">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+          Coffee &amp;
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          Matcha Cart
+        </span>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Middle Tennessee
+        </span>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          Events &middot; Weddings &middot; Private Bookings
+        </span>
+      </div>
+      <a href="mailto:cafein.coffeecart@gmail.com" class="footer-email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        cafein.coffeecart@gmail.com
+      </a>
+      <p class="footer-copy">&copy; 2025 CAFE!N. All rights reserved. &nbsp;&middot;&nbsp; <a href="admin.html" class="admin-link">Admin</a></p>
+    </div>
+  </footer>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

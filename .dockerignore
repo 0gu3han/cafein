@@ -1,0 +1,12 @@
+.git
+.gitignore
+node_modules
+.next
+.env.local
+.env.local.example
+README.md
+# Old static files (replaced by Next.js app)
+index.html
+admin.html
+css/
+js/
