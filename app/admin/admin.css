@@ -357,7 +357,7 @@ a { color: inherit; text-decoration: none; }
 }
 .cat-pill.coffee { background: #f5e6d0; color: var(--brown-mid); }
 .cat-pill.matcha { background: #e8f0e0; color: var(--matcha); }
-.cat-pill.addons { background: #e8eaf6; color: #5c6bc0; }
+.cat-pill.flavors { background: #e8eaf6; color: #5c6bc0; }
 
 .item-badge {
   font-size: 10px;

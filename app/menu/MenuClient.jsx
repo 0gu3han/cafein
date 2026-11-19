@@ -16,17 +16,10 @@ const FlameIcon = () => (
 const TABS = [
   { id: 'coffee', label: 'Coffee' },
   { id: 'matcha', label: 'Matcha' },
-  { id: 'addons', label: 'Add-ons' },
+  { id: 'flavors', label: 'Flavors' },
 ];
 
-function fmtPrice(price, isAddon) {
-  const n = parseFloat(price);
-  const s = n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`;
-  return isAddon ? '+' + s : s;
-}
-
 function MenuItem({ item }) {
-  const isAddon = item.category === 'addons';
   return (
     <div className={`m-item${item.featured ? ' featured' : ''}`}>
       {item.image_url && (
@@ -40,7 +33,6 @@ function MenuItem({ item }) {
             {item.name}
             {item.badge && <span className="m-badge">{item.badge}</span>}
           </h3>
-          <span className="m-price">{fmtPrice(item.price, isAddon)}</span>
         </div>
         {item.description && <p className="m-desc">{item.description}</p>}
         {item.ingredients && (
@@ -100,19 +92,25 @@ export default function MenuClient({ items }) {
       </div>
 
       {/* Items */}
-      <div className="m-list">
-        {filtered.length > 0
-          ? filtered.map(item => <MenuItem key={item.id} item={item} />)
-          : <p className="m-empty">No items yet.</p>
-        }
-      </div>
+      {tab === 'flavors' && filtered.length > 0 ? (
+        <div className="m-flavors">
+          {filtered.map(item => <span key={item.id} className="m-flavor">{item.name}</span>)}
+        </div>
+      ) : (
+        <div className="m-list">
+          {filtered.length > 0
+            ? filtered.map(item => <MenuItem key={item.id} item={item} />)
+            : <p className="m-empty">No items yet.</p>
+          }
+        </div>
+      )}
 
       {/* Footer CTA */}
       <div className="m-footer">
         <p className="m-footer-text">Interested in booking the cart for your event?</p>
         <a href="/#book" className="m-book-btn">Book the Cart</a>
         <a href="mailto:cafein.coffeecart@gmail.com" className="m-email">cafein.coffeecart@gmail.com</a>
-        <p className="m-note">* Prices may vary by event. Custom menus available.</p>
+        <p className="m-note">* Every event menu is customized &mdash; pricing is quoted when you book.</p>
       </div>
 
     </div>

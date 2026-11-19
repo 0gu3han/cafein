@@ -13,13 +13,8 @@ const Icon = ({ d, size = 15, points, cx, cy, r, ...rest }) => (
 );
 
 // ── Utility ───────────────────────────────────────────────────────────────
-function fmtPrice(price, cat) {
-  const n = parseFloat(price);
-  const s = n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`;
-  return cat === 'addons' ? '+' + s : s;
-}
 function catLabel(cat) {
-  return { coffee: 'Coffee', matcha: 'Matcha', addons: 'Add-on' }[cat] || cat;
+  return { coffee: 'Coffee', matcha: 'Matcha', flavors: 'Flavor' }[cat] || cat;
 }
 function statusColor(s) {
   return { pending: '#a0632e', confirmed: '#6a8f55', declined: '#c0393a' }[s] || '#888';
@@ -129,12 +124,12 @@ export default function AdminPage() {
   // ── Save menu item ─────────────────────────────────────────────────────
   async function handleSave(e) {
     e.preventDefault();
-    if (!formData.name || !formData.category || formData.price === '') return;
+    if (!formData.name || !formData.category) return;
     setSaving(true);
 
     const payload = {
       ...formData,
-      price:    parseFloat(formData.price),
+      price:    parseFloat(formData.price) || 0,
       caffeine: parseInt(formData.caffeine)  || 0,
       calories: parseInt(formData.calories)  || 0,
     };
@@ -292,7 +287,7 @@ export default function AdminPage() {
           <>
             <div className="adm-toolbar">
               <div className="adm-tabs">
-                {['all','coffee','matcha','addons'].map(cat => (
+                {['all','coffee','matcha','flavors'].map(cat => (
                   <button key={cat} className={`adm-tab${catFilter === cat ? ' active' : ''}`} onClick={() => setCatFilter(cat)}>
                     {cat === 'all' ? 'All' : catLabel(cat)}
                   </button>
@@ -331,7 +326,6 @@ export default function AdminPage() {
                     {item.description && <p className="item-desc">{item.description}</p>}
                     {item.ingredients && <p className="item-ing"><strong>Ingredients:</strong> {item.ingredients}</p>}
                     <div className="item-meta">
-                      <span className="item-price">{fmtPrice(item.price, item.category)}</span>
                       {item.caffeine > 0 && (
                         <span className="nutr-chip caff">
                           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -393,6 +387,13 @@ export default function AdminPage() {
                       {b.guests && <><span>&middot;</span><span>{b.guests} guests</span></>}
                       {b.location && <><span>&middot;</span><span>{b.location}</span></>}
                     </div>
+                    {(b.drinks || b.flavors) && (
+                      <div className="booking-meta">
+                        {b.drinks  && <span>Serving: {b.drinks}</span>}
+                        {b.drinks && b.flavors && <span>&middot;</span>}
+                        {b.flavors && <span>Flavors: {b.flavors}</span>}
+                      </div>
+                    )}
                   </div>
                   <div className="booking-contact">
                     <a href={`mailto:${b.email}`}>{b.email}</a>
@@ -444,7 +445,7 @@ export default function AdminPage() {
                     <option value="" disabled>Select...</option>
                     <option value="coffee">Coffee</option>
                     <option value="matcha">Matcha</option>
-                    <option value="addons">Add-on</option>
+                    <option value="flavors">Flavor</option>
                   </select>
                 </div>
               </div>
@@ -452,15 +453,9 @@ export default function AdminPage() {
                 <label>Description</label>
                 <input type="text" placeholder="Short description" {...field('description')}/>
               </div>
-              <div className="modal-row">
-                <div className="modal-field">
-                  <label>Price ($) <span className="req">*</span></label>
-                  <input type="number" required min="0" step="0.25" placeholder="5.00" {...field('price')}/>
-                </div>
-                <div className="modal-field">
-                  <label>Badge Label</label>
-                  <input type="text" placeholder="e.g. Fan Fave" {...field('badge')}/>
-                </div>
+              <div className="modal-field">
+                <label>Badge Label</label>
+                <input type="text" placeholder="e.g. Fan Fave" {...field('badge')}/>
               </div>
               <div className="modal-field">
                 <label>Ingredients</label>

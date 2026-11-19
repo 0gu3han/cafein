@@ -3,6 +3,8 @@ import Nav from '@/app/components/Nav';
 import MenuSection from '@/app/components/MenuSection';
 import BookingForm from '@/app/components/BookingForm';
 
+export const dynamic = 'force-dynamic';
+
 // ── Static SVG icons ──────────────────────────────────────────────────────
 const HeartIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -146,7 +148,7 @@ export default async function Page() {
       <MenuSection items={safeItems} />
 
       {/* ── Booking form (client component) ── */}
-      <BookingForm />
+      <BookingForm flavors={safeItems.filter(i => i.category === 'flavors').map(i => i.name)} />
 
       {/* ── Footer ── */}
       <footer className="footer" id="contact">
