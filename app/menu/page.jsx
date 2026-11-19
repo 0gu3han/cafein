@@ -1,6 +1,8 @@
 import { initDB, getMenuItems } from '@/lib/db';
 import MenuClient from './MenuClient';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'CAFE!N — Menu',
   description: 'Coffee & matcha cart menu. Middle Tennessee events, weddings, and private bookings.',
