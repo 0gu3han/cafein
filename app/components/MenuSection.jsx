@@ -33,23 +33,16 @@ const TABS = [
     ),
   },
   {
-    id: 'addons', label: 'Add-ons',
+    id: 'flavors', label: 'Flavors',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/>
+        <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
       </svg>
     ),
   },
 ];
 
-function fmtPrice(price, isAddon) {
-  const n   = parseFloat(price);
-  const str = n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`;
-  return isAddon ? '+' + str : str;
-}
-
 function MenuItem({ item }) {
-  const isAddon = item.category === 'addons';
   return (
     <div className={`menu-item${item.featured ? ' featured' : ''}`}>
       {item.image_url && (
@@ -63,7 +56,6 @@ function MenuItem({ item }) {
             {item.name}
             {item.badge && <span className="badge-new">{item.badge}</span>}
           </h4>
-          <span className="price">{fmtPrice(item.price, isAddon)}</span>
         </div>
         {item.description && <p className="menu-desc">{item.description}</p>}
         {item.ingredients && (
@@ -111,15 +103,21 @@ export default function MenuSection({ items }) {
           ))}
         </div>
 
-        <div className="menu-grid">
-          {filtered.length > 0
-            ? filtered.map(item => <MenuItem key={item.id} item={item} />)
-            : <p className="menu-empty">No items in this category.</p>
-          }
-        </div>
+        {activeTab === 'flavors' && filtered.length > 0 ? (
+          <div className="flavor-chips">
+            {filtered.map(item => <span key={item.id} className="flavor-chip">{item.name}</span>)}
+          </div>
+        ) : (
+          <div className="menu-grid">
+            {filtered.length > 0
+              ? filtered.map(item => <MenuItem key={item.id} item={item} />)
+              : <p className="menu-empty">No items in this category.</p>
+            }
+          </div>
+        )}
 
         <div className="menu-footer">
-          <p className="menu-note">* Prices may vary by event. Custom menus available upon request.</p>
+          <p className="menu-note">* Every event menu is customized &mdash; pricing is quoted when you book.</p>
           <a href="/menu" className="btn btn-primary menu-full-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 18 15 12 9 6"/>

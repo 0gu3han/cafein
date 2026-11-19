@@ -1,8 +1,19 @@
 'use client';
 import { useState, useRef } from 'react';
 
-export default function BookingForm() {
+const DRINK_OPTIONS    = ['Coffee', 'Matcha', 'Other'];
+const INCLUDED_DRINKS  = 2;
+const INCLUDED_FLAVORS = 4;
+
+function toggle(list, value) {
+  return list.includes(value) ? list.filter(v => v !== value) : [...list, value];
+}
+
+export default function BookingForm({ flavors = [] }) {
   const [status, setStatus]   = useState('idle'); // idle | sending | success | error
+  const [drinks, setDrinks]   = useState([]);
+  const [picked, setPicked]   = useState([]);     // selected flavors
+  const [drinkError, setDrinkError] = useState(false);
   const formRef               = useRef(null);
 
   const minDate = new Date().toISOString().split('T')[0];
@@ -10,9 +21,14 @@ export default function BookingForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (!formRef.current.checkValidity()) { formRef.current.reportValidity(); return; }
+    if (drinks.length === 0) { setDrinkError(true); return; }
 
     setStatus('sending');
-    const data = Object.fromEntries(new FormData(formRef.current));
+    const data = {
+      ...Object.fromEntries(new FormData(formRef.current)),
+      drinks:  drinks.join(', '),
+      flavors: picked.join(', '),
+    };
 
     try {
       const res = await fetch('/api/bookings', {
@@ -39,6 +55,7 @@ export default function BookingForm() {
             </div>
             <h3>Request Received!</h3>
             <p>Thanks for reaching out. We&apos;ll get back to you within 48 hours.</p>
+            <p>Heads up: your date isn&apos;t reserved until the deposit is paid.</p>
             <a href="mailto:cafein.coffeecart@gmail.com" className="btn btn-ghost-dark">Email Us Directly</a>
           </div>
         </div>
@@ -100,6 +117,46 @@ export default function BookingForm() {
             <label htmlFor="location">Event Location / Venue</label>
             <input type="text" id="location" name="location" placeholder="City, TN or venue name"/>
           </div>
+          <fieldset className="form-group full choice-group">
+            <legend>What do you want us to serve? <span className="req">*</span></legend>
+            <div className="choice-chips">
+              {DRINK_OPTIONS.map(d => (
+                <label key={d} className={`choice-chip${drinks.includes(d) ? ' selected' : ''}`}>
+                  <input
+                    type="checkbox"
+                    checked={drinks.includes(d)}
+                    onChange={() => { setDrinks(toggle(drinks, d)); setDrinkError(false); }}
+                  />
+                  {d}
+                </label>
+              ))}
+            </div>
+            <p className={`choice-hint${drinks.length > INCLUDED_DRINKS ? ' upcharge' : ''}`}>
+              {drinkError
+                ? 'Please pick at least one.'
+                : `Pick one or more — up to ${INCLUDED_DRINKS} are included, a 3rd option is an additional charge.`}
+            </p>
+          </fieldset>
+
+          {flavors.length > 0 && (
+            <fieldset className="form-group full choice-group">
+              <legend>Pick your flavors</legend>
+              <div className="choice-chips">
+                {flavors.map(f => (
+                  <label key={f} className={`choice-chip${picked.includes(f) ? ' selected' : ''}`}>
+                    <input type="checkbox" checked={picked.includes(f)} onChange={() => setPicked(toggle(picked, f))}/>
+                    {f}
+                  </label>
+                ))}
+              </div>
+              <p className={`choice-hint${picked.length > INCLUDED_FLAVORS ? ' upcharge' : ''}`}>
+                {picked.length > INCLUDED_FLAVORS
+                  ? `${picked.length} selected — ${picked.length - INCLUDED_FLAVORS} extra flavor${picked.length - INCLUDED_FLAVORS > 1 ? 's' : ''} will be an additional charge.`
+                  : `Up to ${INCLUDED_FLAVORS} flavors included (${picked.length}/${INCLUDED_FLAVORS}). Each extra flavor is an additional charge.`}
+              </p>
+            </fieldset>
+          )}
+
           <div className="form-group full">
             <label htmlFor="message">Anything else we should know?</label>
             <textarea id="message" name="message" rows={4} placeholder="Theme, special requests, questions..."/>
@@ -114,6 +171,9 @@ export default function BookingForm() {
           <button type="submit" className="btn btn-submit" disabled={status === 'sending'}>
             {status === 'sending' ? 'Sending...' : 'Send Booking Request'}
           </button>
+          <p className="deposit-note">
+            Your date is not reserved until the deposit is paid. We&apos;ll send deposit details once we confirm availability.
+          </p>
         </form>
       </div>
     </section>

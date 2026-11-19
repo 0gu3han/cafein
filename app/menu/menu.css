@@ -228,6 +228,24 @@ body { background: var(--cream); }
 .m-nutr.caff { background: #fff3e0; color: #a0632e; }
 .m-nutr.cals { background: #fce8e8; color: #c0393a; }
 
+.m-flavors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.m-flavor {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #ecdcc8;
+  color: #2c1810;
+  font-size: 15px;
+  font-weight: 500;
+}
 .m-empty {
   text-align: center;
   padding: 40px;

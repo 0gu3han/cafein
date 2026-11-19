@@ -146,7 +146,7 @@ export default async function Page() {
       <MenuSection items={safeItems} />
 
       {/* ── Booking form (client component) ── */}
-      <BookingForm />
+      <BookingForm flavors={safeItems.filter(i => i.category === 'flavors').map(i => i.name)} />
 
       {/* ── Footer ── */}
       <footer className="footer" id="contact">

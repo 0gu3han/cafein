@@ -510,6 +510,24 @@ svg { flex-shrink: 0; }
   vertical-align: middle;
 }
 
+.flavor-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.flavor-chip {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  color: var(--brown-dark);
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+}
 .menu-empty {
   padding: 40px;
   text-align: center;
@@ -599,6 +617,48 @@ svg { flex-shrink: 0; }
 .form-group select option { background: var(--brown-dark); color: var(--white); }
 .form-group textarea { resize: vertical; min-height: 110px; }
 .booking-form .btn-submit { margin-top: 8px; }
+
+.choice-group { border: 0; padding: 0; margin: 0 0 16px; min-width: 0; }
+.choice-group legend {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.choice-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.form-group .choice-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.form-group .choice-chip:hover { border-color: var(--brown-light); }
+.form-group .choice-chip.selected {
+  background: var(--brown-light);
+  border-color: var(--brown-light);
+  color: var(--brown-dark);
+}
+.form-group .choice-chip:focus-within { outline: 2px solid var(--brown-light); outline-offset: 2px; }
+.form-group .choice-chip input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.choice-hint { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 8px; }
+.choice-hint.upcharge { color: var(--brown-light); }
+.deposit-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}
 
 .form-success {
   text-align: center;
